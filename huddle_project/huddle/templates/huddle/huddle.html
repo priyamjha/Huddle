@@ -1,0 +1,31 @@
+{% extends 'huddle/base.html' %}
+
+{% block content %}
+
+    <div class="max-w-2xl mx-auto p-8 rounded-3xl bg-slate-800 text-white">
+
+        <h2 class="mb-6 text-2xl">Huddle - {{ huddle.key }}</h2>
+
+        <!-- Chat messages box with scrollbar -->
+        <div class="mt-6 space-y-4 pb-7 max-h-96 overflow-y-auto pr-2">
+            {% for item in huddle.items.all %}
+            <div class="py-4 px-6 bg-slate-700 text-white rounded-xl">
+                <p class="font-bold">By {{ item.user }} @ {{ item.created_at|timesince }} ago</p>
+                <p class="mt-2">{{ item.content }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <form method="post" action="{% url 'huddle' %}?user={{ user }}&key={{ huddle.key }}" class="space-y-4 mt-4">
+            {% csrf_token %}
+
+            <input type="hidden" name="user" value="{{ user }}" />
+
+            <textarea name="content" class="w-full py-4 px-6 bg-slate-600 text-white rounded-xl" placeholder="Enter Your Message"></textarea>
+            
+            <button type="submit" class="w-32 bg-sky-700 hover:bg-sky-800 text-white py-4 px-6 rounded-xl">Submit</button>
+        </form>
+        
+    </div>
+    
+{% endblock %}
