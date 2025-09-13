@@ -27,30 +27,6 @@ Messages are stored in the database, displayed in a scrollable chat box, and not
 
 ---
 
-## 📂 Project Structure
-
-```
-
-huddle\_project/
-│
-├── huddle/                # Main Django app
-│   ├── models.py          # Huddle & Item models
-│   ├── forms.py           # ItemForm (message form)
-│   ├── views.py           # Views (index, huddle)
-│   ├── utilities.py       # Email notifications + cleanup
-│   ├── templates/huddle/  # HTML templates
-│   ├── urls.py
-│
-├── huddle\_project/        # Django project configs
-│   ├── settings.py
-│   ├── urls.py
-│
-└── manage.py
-
-````
-
----
-
 ## ⚙️ Installation & Setup
 
 1. **Clone the repository**
